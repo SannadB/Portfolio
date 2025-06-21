@@ -5,45 +5,49 @@ import { useState } from "react"
 
 const experiences = [
   {
-    title: "AI Engineer",
+    title: "Software Developer (AI Engineer)",
     company: "Genetech Solutions",
-    period: "June 2024 - Present",
-    description:
-      "Leading AI solution development in Genetech's Emerging Technologies Lab (GETLab), focusing on computer vision, deep learning, and LLM-based systems. Responsible for designing full-stack AI solutions and architecting end-to-end pipelines.",
+    period: "Feb 2022 - Present",
     achievements: [
-      "Developed facial recognition and visual detection pipelines",
-      "Built LLM-based customer service systems",
-      "Deployed AI solutions on AWS, GCP, and DigitalOcean",
-      "Led computer vision projects using YOLO and Vision Transformers",
+      "Initially joined as a software developer working on websites, web applications, and desktop solutions.",
+      "Transitioned into AI projects in mid-2023 with Genetech’s Emerging Technologies Lab (GETLab), focusing on applied computer vision, deep learning and LLM-based systems.",
+      "Serving as AI Engineer since June 2024 — responsible for designing full-stack AI solutions, leading deep learning model development, and architecting end-to-end pipelines for computer vision and NLP applications.",
+      "Also involved in deploying both AI and web systems on cloud platforms including AWS EC2, Google Cloud, and DigitalOcean, utilizing Docker, CI/CD pipelines, and scalable architectures with Nginx and Apache servers.",
     ],
     color: "from-blue-500 to-purple-600"
-  },
-  {
-    title: "Software Developer",
-    company: "Genetech Solutions",
-    period: "Feb 2022 - June 2024",
-    description:
-      "Started as software developer working on websites, web applications, and desktop solutions. Transitioned to AI projects in mid-2023, focusing on applied computer vision and deep learning.",
-    achievements: [
-      "Developed web applications using Laravel and Vue.js",
-      "Transitioned to AI/ML development",
-      "Implemented CI/CD pipelines with Docker",
-      "Built scalable architectures with Nginx and Apache",
-    ],
-    color: "from-green-500 to-teal-600"
   },
   {
     title: "AI Trainer",
     company: "ConsulNet Corporation",
     period: "June 2024 - Present",
-    description:
-      "Teaching practical AI tools including LLMs, prompt engineering, and real-world AI applications to beginners.",
     achievements: [
       "Designed beginner-friendly AI curriculum",
       "Taught LLM applications and prompt engineering",
       "Guided students through hands-on AI projects",
     ],
     color: "from-orange-500 to-red-600"
+  },
+  {
+    title: "Python Trainer",
+    company: "ConsulNet Corporation",
+    period: "Jan 2023 - Feb 2024",
+    description:
+      "Started as software developer working on websites, web applications, and desktop solutions. Transitioned to AI projects in mid-2023, focusing on applied computer vision and deep learning.",
+    achievements: [
+      "Taught beginner-level Python programming with a focus on core programming concepts, structured problem-solving, and algorithmic thinking.",
+      "Guided students through hands-on implementation and analysis of fundamental algorithms such as sorting, searching, and recursion in Python.",
+      "Led a capstone project where students built a full-featured web application using Django."
+    ],
+    color: "from-green-500 to-teal-600"
+  },
+  {
+    title: "Electrical Engineer",
+    company: "Systematic Engineering Services",
+    period: "Nov 2021 - Feb 2022",
+    achievements: [
+      "Performed all Electrical and Instrumentation services for clients.",
+    ],
+    color: "from-teal-500 to-yello-600"
   },
 ]
 
@@ -169,7 +173,6 @@ export default function ExperienceSection() {
                 }}
                 transition={{ duration: 0.3 }}
               >
-                {exp.description}
               </motion.p>
 
               <div>
@@ -180,7 +183,7 @@ export default function ExperienceSection() {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  Key Achievements:
+                  Description:
                 </motion.h4>
                 
                 <motion.ul className="space-y-2">

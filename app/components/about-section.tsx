@@ -52,7 +52,7 @@ export default function AboutSection() {
               />
               
               <Image
-                src="/sannad-bilal.jpeg"
+                src="/Sannad.png"
                 alt="Sannad Bilal"
                 fill
                 className="rounded-full object-cover border-4 border-gray-300 dark:border-gray-600 shadow-lg group-hover:shadow-2xl transition-shadow duration-300"
