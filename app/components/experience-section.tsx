@@ -5,9 +5,17 @@ import { useState } from "react"
 
 const experiences = [
   {
+    title: "Senior Computer Vision Engineer",
+    company: "XLoop Digital",
+    period: "November 2025 - Present",
+    achievements: [,
+    ],
+    color: "from-blue-500 to-purple-600"
+  },
+  {
     title: "Software Developer (AI Engineer)",
     company: "Genetech Solutions",
-    period: "Feb 2022 - Present",
+    period: "Feb 2022 - November 2025",
     achievements: [
       "Initially joined as a software developer working on websites, web applications, and desktop solutions.",
       "Transitioned into AI projects in mid-2023 with Genetech’s Emerging Technologies Lab (GETLab), focusing on applied computer vision, deep learning and LLM-based systems.",
