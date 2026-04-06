@@ -22,9 +22,11 @@ const tabs = [
 ]
 
 const roles = [
+  "Robotics Engineer",
+  "Computer Vision Engineer",
   "AI Engineer",
-  "Software Developer",
   "Embedded Systems Engineer",
+  "Software Engineer",
 ]
 
 export default function Home() {

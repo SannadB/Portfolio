@@ -137,7 +137,7 @@ export default function AboutSection() {
                 <span className="text-2xl">💼</span>
                 <div>
                   <h3 className="font-semibold">Current Role</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Senior Computer Vision Engineer at XLoop Digital</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Computer Vision & Robotics Engineer at Kodifly</p>
                 </div>
               </div>
 
@@ -146,7 +146,7 @@ export default function AboutSection() {
                 <div>
                   <h3 className="font-semibold">Specialization</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Computer Vision, Artificial Intelligence, Embedded Systems, Software Development
+                    Robotics, Computer Vision, Artificial Intelligence, Embedded Systems, Software Development
                   </p>
                 </div>
               </div>

@@ -5,35 +5,48 @@ import { useState } from "react"
 
 const experiences = [
   {
-    title: "Senior Computer Vision Engineer",
-    company: "XLoop Digital",
-    period: "November 2025 - Present",
+    title: "Computer Vision Engineer & Robotics Engineer",
+    company: "Kodifly",
+    period: "May 2026 - Present",
     achievements: [,
     ],
-    color: "from-blue-500 to-purple-600"
+    color: "from-indigo-500 to-purple-600"
+  },
+  {
+    title: "Computer Vision Engineer",
+    company: "XLoop Digital",
+    period: "November 2025 - April 2026",
+    achievements: [,
+      "Leading the development of 'xVision', Xloop Digital’s computer vision product for intelligent visual inspection, object detection, tracking, and analytics.",
+      "Designed, trained, and fine-tuned deep learning models to meet strict product requirements, consistently achieving 90\%+ accuracy.",
+      "Optimized models for production deployment, improving inference speed, memory efficiency, and stability for real-time and resource-constrained environments.",
+      "Architected end-to-end AI pipelines and deployed web/AI systems on cloud platforms including AWS EC2, Google Cloud, and DigitalOcean using Docker, CI/CD pipelines, and scalable server configurations with Nginx and Apache.",
+      "Collaborating with cross-functional teams to integrate computer vision solutions into products, ensuring robust performance and maintainability."
+      ],
+    color: "from-blue-500 to-indigo-600"
   },
   {
     title: "Software Developer (AI Engineer)",
     company: "Genetech Solutions",
-    period: "Feb 2022 - November 2025",
+    period: "February 2022 - November 2025",
     achievements: [
       "Initially joined as a software developer working on websites, web applications, and desktop solutions.",
       "Transitioned into AI projects in mid-2023 with Genetech’s Emerging Technologies Lab (GETLab), focusing on applied computer vision, deep learning and LLM-based systems.",
       "Serving as AI Engineer since June 2024 — responsible for designing full-stack AI solutions, leading deep learning model development, and architecting end-to-end pipelines for computer vision and NLP applications.",
       "Also involved in deploying both AI and web systems on cloud platforms including AWS EC2, Google Cloud, and DigitalOcean, utilizing Docker, CI/CD pipelines, and scalable architectures with Nginx and Apache servers.",
     ],
-    color: "from-blue-500 to-purple-600"
+    color: "from-cyan-500 to-blue-600"
   },
   {
     title: "AI Trainer",
     company: "ConsulNet Corporation",
-    period: "June 2024 - Present",
+    period: "June 2024 - November 2025",
     achievements: [
       "Designed beginner-friendly AI curriculum",
       "Taught LLM applications and prompt engineering",
       "Guided students through hands-on AI projects",
     ],
-    color: "from-orange-500 to-red-600"
+    color: "from-green-500 to-teal-600"
   },
   {
     title: "Python Trainer",
@@ -46,7 +59,7 @@ const experiences = [
       "Guided students through hands-on implementation and analysis of fundamental algorithms such as sorting, searching, and recursion in Python.",
       "Led a capstone project where students built a full-featured web application using Django."
     ],
-    color: "from-green-500 to-teal-600"
+    color: "from-yellow-500 to-green-600"
   },
   {
     title: "Electrical Engineer",
@@ -55,7 +68,7 @@ const experiences = [
     achievements: [
       "Performed all Electrical and Instrumentation services for clients.",
     ],
-    color: "from-teal-500 to-yello-600"
+    color: "from-orange-500 to-red-600"
   },
 ]
 
