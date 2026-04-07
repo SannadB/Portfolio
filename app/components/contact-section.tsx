@@ -31,7 +31,6 @@ export default function ContactSection() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/SannadB", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/sannad-bilal-485910221", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/alexjohnson", label: "Twitter" },
   ]
 
   return (

@@ -13,7 +13,8 @@ const education = [
     gpa: "3.73/4.0",
     description:
       "Thesis: Enabling Climate Intelligence: Integrating RIS-UAVs, Gen AI, and 6G for Environmental Monitoring",
-    coursework: ["Machine Learning", "Deep Learning", "Computer Vision", "Signal Processing"],
+    coursework: ["Data Structures and Algorithms", "Object-Oriented Prgramming", "Operating Systems", "Theory of Automata", "Advanced Theory of Computation", "Advanced Analysis of Algorithms", "Machine Learning", "Deep Learning", "Computer Vision", "BlockChain", "Cloud Computing"],
+    pdf: "/MS.pdf", // <-- Add the PDF link
   },
   {
     degree: "Bachelor of Engineering in Electrical Engineering",
@@ -22,45 +23,25 @@ const education = [
     period: "Oct 2017 - Oct 2021",
     gpa: "3.52/4.0",
     description: "Final Year Project: Smart OCR Application for Meter Reading",
-    coursework: ["Digital Signal Processing", "Embedded Systems", "Control Systems", "Power Electronics"],
+    coursework: ["Logic Design and Switching Theory", "Circuit Analysis", "Electronic Devices and Circuits", "Signals and Systems", "Digital Signal Processing", "Embedded Systems", "Microprocessor Programming and Interfacing", "Electromagentic Fields", "Control Systems", "Instrumentation and Measurement", "Power Electronics", "Electrical Machines", "Electrical Power Distribution and Utilization", "Electrical Power Transmission", "Power Generation", "Electrical Power Systems Protection", "Alternate Energy Systems", "Computer Communcation Networks"],
+    pdf: "/BE.pdf", // <-- Add the PDF link
   },
-]
+];
 
-const achievements = [
+const publications = [
   {
-    title: "Machine Learning",
-    issuer: "Stanford University, Coursera",
-    date: "2023",
-    description: "Online certification in Machine Learning",
-    icon: "🏆",
-  },
-  {
-    title: "Python Project: Pillow, Tesseract and OpenCV",
-    issuer: "University of Michigan, Coursera",
-    date: "2023",
-    description: "Online certification in Python",
-    icon: "⭐",
-  },
-  {
-    title: "Complete Python Bootcamp",
-    issuer: "Udemy",
-    date: "2023",
-    description: "Online certification in Python",
-    icon: "🚀",
-  },
-  {
-    title: "Mastering OCR",
-    issuer: "Udemy",
-    date: "2023",
-    description: "Online certification in OCR",
-    icon: "💻",
-  },
-  {
-    title: "Published research in MDPI Engineering Proceedings",
+    title: "Smart OCR Application for Meter Reading",
     issuer: "MDPI",
-    date: "2023",
-    description: "Published research paper",
+    date: "August, 2022",
     icon: "🥇",
+    pdf: "https://doi.org/10.3390/engproc2022020025",
+  },
+  {
+    title: "Predicting and Classifying OFDM Modulated Signals for 6G Wireless Network",
+    issuer: "IEEE Xplore",
+    date: "August, 2025",
+    icon: "🥇",
+    pdf: "https://doi.org/10.1109/ICETAS62372.2024.11119805",
   },
 ]
 
@@ -74,28 +55,50 @@ const courses = [
     certificate: "https://example.com/cert1",
   },
   {
-    title: "Python Project: Pillow, Tesseract and OpenCV",
-    provider: "University of Michigan, Coursera",
-    date: "2023",
-    duration: "80 hours",
-    skills: ["Python", "OCR", "OpenCV"],
-    certificate: "https://example.com/cert2",
+    title: "ROS 2 for Beginners (ROS Jazzy - 2026)",
+    provider: "Udemy",
+    date: "2026",
+    duration: "13 hours",
+    skills: ["ROS 2", "ROS 2 Basics", "Robotics", "Robotics Engineer"],
+    certificate: "https://www.udemy.com/certificate/UC-211a2a1f-ba40-4391-874d-7f8fc5f54986/",
   },
   {
-    title: "Complete Python Bootcamp",
+    title: "Beginning C++ Programming - From Beginner to Beyond",
     provider: "Udemy",
-    date: "2022",
-    duration: "40 hours",
-    skills: ["Python", "Programming"],
-    certificate: "https://example.com/cert3",
+    date: "2026",
+    duration: "46 hours",
+    skills: ["C++", "Programming", "Algorithms", "Data Structures"],
+    certificate: "https://www.udemy.com/certificate/UC-88f366b0-7b9a-4bce-b8f9-45a151dfcffb/",
   },
   {
-    title: "Mastering OCR",
+    title: "Crash Course Digital Electronics",
+    provider: "Udemy",
+    date: "2026",
+    duration: "8.5 hours",
+    skills: ["Digital Electronics", "Circuit Design", "Electronics", "Electronics Engineering"],
+    certificate: "https://www.udemy.com/certificate/UC-be03b561-e6f2-4cd3-8877-7df3310ebf32/",
+  },
+  {
+    title: "Python (Basic)",
+    provider: "HackerRank",
+    date: "2022",
+    skills: ["Python", "Algorithms", "Data Structures", "OOP"],
+    certificate: "https://www.hackerrank.com/certificates/ad0c8c31b2a1",
+  },
+  {
+    title: "JavaScript (Intermediate)",
+    provider: "HackerRank",
+    date: "2022",
+    skills: ["JavaScript", "Frontend Development"],
+    certificate: "https://www.hackerrank.com/certificates/3d6f36f8f8b3",
+  },
+  {
+    title: "Learn MySQL - For Beginners",
     provider: "Udemy",
     date: "2022",
-    duration: "50 hours",
-    skills: ["OCR", "Tesseract", "Image Processing"],
-    certificate: "https://example.com/cert4",
+    duration: "1.5 hours",
+    skills: ["MySQL", "Database Management", "SQL", "PHPMyAdmin"],
+    certificate: "https://www.udemy.com/certificate/UC-caf16c86-e6b6-49be-9385-e32c71cd4db1/",
   },
 ]
 
@@ -175,7 +178,15 @@ export default function CVSection() {
             >
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-2">
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
+                  <motion.a
+                    href={edu.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {edu.degree}
+                  </motion.a>
                   <p className="text-gray-600 dark:text-gray-300 font-medium">{edu.institution}</p>
                 </div>
                 <div className="text-right mt-2 lg:mt-0">
@@ -219,31 +230,38 @@ export default function CVSection() {
       >
         <div className="flex items-center gap-3 mb-6">
           <Award className="text-gray-600 dark:text-gray-400" size={24} />
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Achievements & Certifications</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Publications</h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {achievements.map((achievement, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={achievementsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-              className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all duration-300"
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">{achievement.icon}</span>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{achievement.title}</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
-                    {achievement.issuer} • {achievement.date}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{achievement.description}</p>
-                </div>
+        {publications.map((pub, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -50 }}
+            animate={achievementsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+            className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">{pub.icon}</span>
+              <div className="flex-1">
+                <motion.a
+                  href={pub.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  {pub.title}
+                </motion.a>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                  {pub.issuer} • {pub.date}
+                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
       </motion.section>
 
       {/* Courses Section */}

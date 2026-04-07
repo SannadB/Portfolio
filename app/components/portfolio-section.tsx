@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Lock } from "lucide-react"
+import Image from "next/image"
 
 const projects = [
   {
@@ -12,8 +13,7 @@ const projects = [
     image: "/placeholder.svg?height=300&width=400",
     technologies: ["Python", "YOLO", "GANs", "Vision Transformers", "OpenCV"],
     date: "April 2025 – June 2025",
-    liveUrl: "",
-    githubUrl: "",
+    githubUrl: "https://github.com/SannadB/Face-Recognition",
   },
   {
     title: "Human Engagement Detection in Classrooms",
@@ -89,10 +89,10 @@ const projects = [
     title: "EdexOnline - Learning Management System",
     description:
       "Comprehensive LMS platform that allows students to participate in different courses with features for course management, student enrollment, and progress tracking.",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["ReactJS", "NestJS", "MySQL", "Full Stack"],
+    image: "/Projects/Edex.png",
+    technologies: ["ReactJS", "NestJS", "MySQL", "WebSockets", "Digital Ocean"],
     date: "September 2023 – September 2024",
-    liveUrl: "",
+    liveUrl: "https://edexonline.co.uk/",
     githubUrl: "",
   },
   {
@@ -129,11 +129,16 @@ const projects = [
     title: "ServU - POS and Appointments System",
     description:
       "Full-stack POS invoice and appointments web application for service providers with customer management, billing, and scheduling features.",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["Laravel", "Nuxt.js", "Vue.js", "Docker", "MySQL"],
+    image: "/Projects/ServU.png",
+    technologies: ["Laravel / Lumen", "Nuxt.js", "Vue.js", "MySQL"],
     date: "January 2021 – May 2022",
+    private: true,
     liveUrl: "",
-    githubUrl: "",
+    githubUrls: [
+      { label: "Backend", url: "https://github.com/SannadB/servu-v3-api" },
+      { label: "Portal", url: "https://github.com/SannadB/servu-v3-portal" },
+      { label: "MarketPlace", url: "https://github.com/SannadB/servu-v3-marketplace" }
+    ]
   },
 ];
 
@@ -207,7 +212,7 @@ export default function PortfolioSection() {
             }}
             className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group shadow-lg"
           >
-            <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
+            <div className="relative h-48 overflow-hidden">
               <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
                 animate={gridAnimation.isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
@@ -215,9 +220,14 @@ export default function PortfolioSection() {
                   delay: 0.4 + (index * 0.15), 
                   duration: 0.6 
                 }}
-                className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full relative"
               >
-                <span className="text-gray-500 dark:text-gray-400 text-sm">Project Image</span>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className={`object-cover transition-transform duration-300 group-hover:scale-105}`}
+                />
               </motion.div>
             </div>
 
@@ -232,7 +242,12 @@ export default function PortfolioSection() {
             >
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
-
+              {project.private && (
+                <div className="flex items-center gap-1 text-xs text-yellow-600 dark:text-yellow-400 mb-2">
+                  <Lock size={14} />
+                  Private Project
+                </div>
+              )}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, i) => (
                   <motion.span
@@ -250,39 +265,67 @@ export default function PortfolioSection() {
                 ))}
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={gridAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                transition={{ 
-                  delay: 0.7 + (index * 0.15), 
-                  duration: 0.5 
-                }}
-                className="flex gap-4"
-              >
-                <motion.a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-700 dark:from-gray-600 dark:to-gray-500 text-white rounded-lg hover:from-gray-900 hover:to-gray-800 dark:hover:from-gray-500 dark:hover:to-gray-400 transition-all duration-300 shadow-md"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+              {(project.liveUrl || project.githubUrl || project.githubUrls?.length > 0) && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={gridAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ 
+                    delay: 0.7 + (index * 0.15), 
+                    duration: 0.5 
+                  }}
+                  className="flex flex-wrap gap-3"
                 >
-                  <ExternalLink size={16} />
-                  Live Demo
-                </motion.a>
+                  {/* Live Demo */}
+                  {project.liveUrl && (
+                    <motion.a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-700 dark:from-gray-600 dark:to-gray-500 text-white rounded-lg hover:from-gray-900 hover:to-gray-800 dark:hover:from-gray-500 dark:hover:to-gray-400 transition-all duration-300 shadow-md"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ExternalLink size={16} />
+                      Live Demo
+                    </motion.a>
+                  )}
 
-                <motion.a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Github size={16} />
-                  Code
-                </motion.a>
-              </motion.div>
+                  {/* Multiple GitHub Repos */}
+                  {project.githubUrls?.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {project.githubUrls.map((repo, i) => (
+                        <motion.a
+                          key={i}
+                          href={repo.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Github size={14} />
+                          {repo.label}
+                        </motion.a>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Single GitHub Repo (fallback) */}
+                  {project.githubUrl && !project.githubUrls && (
+                    <motion.a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Github size={16} />
+                      Code
+                    </motion.a>
+                  )}
+                </motion.div>
+              )}
             </motion.div>
           </motion.div>
         ))}

@@ -17,7 +17,13 @@ export const metadata: Metadata = {
     description: "Professional portfolio and CV showcasing expertise in AI and embedded systems development",
     type: "website",
   },
-    generator: 'v0.dev'
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    manifest: "/site.webmanifest",
+  },
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
