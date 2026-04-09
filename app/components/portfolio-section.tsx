@@ -2,20 +2,21 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { ExternalLink, Github, Lock } from "lucide-react"
+import { ExternalLink, Github, Lock, FileText, Briefcase } from "lucide-react"
 import Image from "next/image"
 
 const projects = [
   {
     title: "xVision",
     description:
-      "Robust facial recognition pipeline using YOLO for face detection, GANs and super-resolution for quality enhancement, and Vision Transformers (ViT) for embedding generation. Compares embeddings using cosine and Euclidean similarity to recognize employees from low-resolution CCTV footage.",
+      "Enterprise-grade AI surveillance system leveraging computer vision and deep learning to enable real-time threat detection, facial recognition, and behavioral analytics from video streams.",
     image: "/Projects/xVision.jpg",
     video: "/Projects/xVision.mp4",
     technologies: ["Python", "YOLO", "GANs", "Vision Transformers", "OpenCV", "PyTorch", "Nvidia Triton Server", "TensorRT", "ONNX", "ONNX Runtime", "Docker", "TorchServe"],
     date: "November 2025 – April 2026",
     githubUrl: "https://github.com/SannadB/Face-Recognition",
-    liveUrl: "https://xvision-frontend2-0.vercel.app/"
+    liveUrl: "https://xvision-frontend2-0.vercel.app/",
+    portfolioUrl: "https://www.xloopdigital.com/xlab/xVision"
   },
   {
     title: "One-shot Facial Recognition for CCTV Surveillance",
@@ -60,20 +61,20 @@ const projects = [
     title: "Predicting and Classifying OFDM Signals for 6G",
     description:
       "Complete hardware simulation architecture for 6G OFDM communication system using MATLAB. Generated synthetic datasets for signal prediction using LSTM, GRU, and Transformers. Performed signal classification using wavelet transform and Random Forest. Published in IEEE Xplore.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/6g.jpg",
     technologies: ["MATLAB", "Python", "Transformers", "LSTM", "Signal Processing"],
     date: "January 2024 – January 2025",
-    liveUrl: "",
+    paperUrl: "https://ieeexplore.ieee.org/abstract/document/11119805",
     githubUrl: "",
   },
   {
     title: "AI PhotoBooth",
     description:
       "Face swap application that captures images from camera and creates avatars using advanced face detection and swapping technology with InsightFace.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/photobooth.jpg",
     technologies: ["Python", "Flask", "OpenCV", "InsightFace"],
     date: "August 2024",
-    liveUrl: "",
+    portfolioUrl: "https://www.genetechsolutions.com/portfolio/detail/ai-photobooth",
     githubUrl: "",
   },
   {
@@ -90,10 +91,10 @@ const projects = [
     title: "HeySmarty - Customer Service Chatbot",
     description:
       "Customer service chatbot for SmarterHome business using GPT-3.5 and GPT-4 models, integrated with Google Search, Google Maps, and Weather APIs. Built admin panel for conversation analytics and user activity tracking.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/HeySmarty.png",
     technologies: ["Python", "Flask", "OpenAI", "GPT-4", "APIs"],
     date: "April 2024 – October 2024",
-    liveUrl: "",
+    portfolioUrl: "https://www.genetechsolutions.com/portfolio/detail/heysmarty",
     githubUrl: "",
   },
   {
@@ -110,33 +111,36 @@ const projects = [
     
   },
   {
-    title: "Ethread - Sustainable Garment Solutions Portal",
+    title: "EThread - Sustainable Garment Solutions Portal",
     description:
       "Portal for e-THREAD, an Australian organization offering nationwide sustainable and eco-friendly garment solutions. Built to manage their bin cleaning services with full containerization.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/EThread.png",
+    video: "/Projects/EThread.mp4",
     technologies: ["Laravel", "Vue.js", "Docker", "MySQL", "Linux"],
     date: "September 2023 – September 2024",
-    liveUrl: "",
-    githubUrl: "",
+    private: true,
+    githubUrl: "https://github.com/SannadB/Ethread",
+    portfolioUrl: "https://www.genetechsolutions.com/portfolio/detail/e-thread-1",
   },
   {
     title: "Republic Sentinel - News Platform",
     description:
       "Full-stack article website using Strapi as a headless CMS for content management and API delivery. Implemented SEO optimization and JAMStack architecture.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/republicsentinel.jpg",
     technologies: ["Strapi", "Nuxt.js", "MySQL", "JAMStack", "SEO"],
     date: "August 2022 – December 2022",
-    liveUrl: "",
+    portfolioUrl: "https://www.genetechsolutions.com/portfolio/detail/the-sentinel",
     githubUrl: "",
+
   },
   {
     title: "OCR Application for Meter Reading",
     description:
       "OCR application to capture readings from electricity meters using TensorFlow and OpenCV. Published research in MDPI Engineering Proceedings with automated meter reading capabilities.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/Projects/ocr.jpg",
     technologies: ["Python", "TensorFlow", "OpenCV", "OCR"],
     date: "January 2021 – January 2022",
-    liveUrl: "",
+    paperUrl: "https://www.mdpi.com/2673-4591/20/1/25",
     githubUrl: "",
   },
   {
@@ -298,7 +302,7 @@ export default function PortfolioSection() {
                 ))}
               </div>
 
-              {(project.liveUrl || project.githubUrl || project.githubUrls?.length > 0) && (
+              {( project.liveUrl || project.githubUrl || project.githubUrls?.length > 0 || project.paperUrl || project.portfolioUrl ) && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={gridAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
@@ -355,6 +359,34 @@ export default function PortfolioSection() {
                     >
                       <Github size={16} />
                       Code
+                    </motion.a>
+                  )}
+
+                  {project.paperUrl && (
+                    <motion.a
+                      href={project.paperUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-blue-300 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <FileText size={16} />
+                      Paper
+                    </motion.a>
+                  )}
+
+                  {project.portfolioUrl && (
+                    <motion.a
+                      href={project.portfolioUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-green-300 text-green-700 dark:text-green-300 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/30 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Briefcase size={16} />
+                      Case Study
                     </motion.a>
                   )}
                 </motion.div>

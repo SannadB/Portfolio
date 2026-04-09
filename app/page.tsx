@@ -35,6 +35,33 @@ export default function Home() {
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
 
+    // 👉 1. On load: check URL hash
+  useEffect(() => {
+      const hash = window.location.hash.replace("#", "")
+
+      if (hash && tabs.some(tab => tab.id === hash)) {
+        setActiveTab(hash)
+      }
+    }, [])
+
+    // 👉 2. Sync tab → URL
+    useEffect(() => {
+      window.location.hash = activeTab
+    }, [activeTab])
+
+    // 👉 3. Handle browser back/forward
+    useEffect(() => {
+      const handleHashChange = () => {
+        const hash = window.location.hash.replace("#", "")
+        if (hash && tabs.some(tab => tab.id === hash)) {
+          setActiveTab(hash)
+        }
+      }
+
+      window.addEventListener("hashchange", handleHashChange)
+      return () => window.removeEventListener("hashchange", handleHashChange)
+    }, [])
+
   useEffect(() => {
     const currentRole = roles[currentRoleIndex]
     
