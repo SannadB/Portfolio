@@ -7,6 +7,17 @@ import Image from "next/image"
 
 const projects = [
   {
+    title: "xVision",
+    description:
+      "Robust facial recognition pipeline using YOLO for face detection, GANs and super-resolution for quality enhancement, and Vision Transformers (ViT) for embedding generation. Compares embeddings using cosine and Euclidean similarity to recognize employees from low-resolution CCTV footage.",
+    image: "/Projects/xVision.jpg",
+    video: "/Projects/xVision.mp4",
+    technologies: ["Python", "YOLO", "GANs", "Vision Transformers", "OpenCV", "PyTorch", "Nvidia Triton Server", "TensorRT", "ONNX", "ONNX Runtime", "Docker", "TorchServe"],
+    date: "November 2025 – April 2026",
+    githubUrl: "https://github.com/SannadB/Face-Recognition",
+    liveUrl: "https://xvision-frontend2-0.vercel.app/"
+  },
+  {
     title: "One-shot Facial Recognition for CCTV Surveillance",
     description:
       "Robust facial recognition pipeline using YOLO for face detection, GANs and super-resolution for quality enhancement, and Vision Transformers (ViT) for embedding generation. Compares embeddings using cosine and Euclidean similarity to recognize employees from low-resolution CCTV footage.",
@@ -90,10 +101,13 @@ const projects = [
     description:
       "Comprehensive LMS platform that allows students to participate in different courses with features for course management, student enrollment, and progress tracking.",
     image: "/Projects/Edex.png",
+    video: "/Projects/Edex.mp4",
     technologies: ["ReactJS", "NestJS", "MySQL", "WebSockets", "Digital Ocean"],
     date: "September 2023 – September 2024",
     liveUrl: "https://edexonline.co.uk/",
-    githubUrl: "",
+    githubUrl: "https://github.com/SannadB/Edex",
+    private: true
+    
   },
   {
     title: "Ethread - Sustainable Garment Solutions Portal",
@@ -212,22 +226,41 @@ export default function PortfolioSection() {
             }}
             className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group shadow-lg"
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-48 overflow-hidden group">
               <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
                 animate={gridAnimation.isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-                transition={{ 
-                  delay: 0.4 + (index * 0.15), 
-                  duration: 0.6 
-                }}
+                transition={{ delay: 0.4 + (index * 0.15), duration: 0.6 }}
                 className="w-full h-full relative"
               >
+
+                {/* IMAGE */}
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className={`object-cover transition-transform duration-300 group-hover:scale-105}`}
+                  className={`object-cover transition-all duration-500 ${
+                    project.video 
+                      ? "group-hover:opacity-0 group-hover:scale-110" 
+                      : ""
+                  }`}
                 />
+
+                {/* VIDEO (only if exists) */}
+                {project.video && (
+                  <video
+                    src={project.video}
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 scale-105 group-hover:scale-100"
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause()
+                      e.currentTarget.currentTime = 0
+                    }}
+                  />
+                )}
               </motion.div>
             </div>
 
