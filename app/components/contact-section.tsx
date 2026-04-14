@@ -4,33 +4,37 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Globe } from "lucide-react"
+import { useForm, ValidationError } from "@formspree/react"
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({ name: "", email: "", message: "" })
-  }
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault()
+  //   // Handle form submission here
+  //   console.log("Form submitted:", formData)
+  //   // Reset form
+  //   setFormData({ name: "", email: "", message: "" })
+  // }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   })
+  // }
+
+  const [state, handleSubmit] = useForm("xyklyray")
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/SannadB", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/sannad-bilal-485910221", label: "LinkedIn" },
+    { icon: Globe, href: "https://orcid.org/0000-0002-6822-3070", label: "ORCID" },
   ]
 
   return (
@@ -102,62 +106,67 @@ export default function ContactSection() {
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Send a Message</h3>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition-colors duration-300"
-                placeholder="Your Name"
-              />
-            </div>
+            {state.succeeded ? (
+              <p className="text-green-600 dark:text-green-400">
+                ✅ Message sent successfully!
+              </p>
+            ) : (
+              <>
+                <div>
+                  <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white"
+                    placeholder="Your Name"
+                  />
+                </div>
 
-            <div>
-              <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition-colors duration-300"
-                placeholder="your.email@example.com"
-              />
-            </div>
+                <div>
+                  <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white"
+                    placeholder="your.email@example.com"
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                </div>
 
-            <div>
-              <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition-colors duration-300 resize-none"
-                placeholder="Your message..."
-              />
-            </div>
+                <div>
+                  <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white resize-none"
+                    placeholder="Your message..."
+                  />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
+                </div>
 
-            <motion.button
-              type="submit"
-              className="w-full py-3 bg-gradient-to-r from-gray-800 to-gray-700 dark:from-gray-600 dark:to-gray-500 text-white font-semibold rounded-lg hover:from-gray-900 hover:to-gray-800 dark:hover:from-gray-500 dark:hover:to-gray-400 transition-all duration-300 shadow-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Send Message
-            </motion.button>
+                <motion.button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="w-full py-3 bg-gradient-to-r from-gray-800 to-gray-700 dark:from-gray-600 dark:to-gray-500 text-white font-semibold rounded-lg hover:from-gray-900 hover:to-gray-800 transition-all duration-300 shadow-lg disabled:opacity-50"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {state.submitting ? "Sending..." : "Send Message"}
+                </motion.button>
+              </>
+            )}
           </form>
         </motion.div>
       </div>

@@ -113,7 +113,7 @@ export default function AboutSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
             >
-              With a background in Electrical Engineering and a Master’s in Computer Science, I operate at the intersection of AI, embedded systems, and full-stack software. From building facial recognition pipelines and LLM-powered tools to simulating 6G signal systems and deploying CV models at scale, I bring the versatility to design, train, and ship intelligent systems that work — from silicon to server.
+              3D Computer Vision & Robotics Engineer with hands-on experience designing and deploying real-time perception systems for object detection, tracking, and scene understanding. Strong foundation in deep learning and classical computer vision, with practical expertise in end-to-end production deployments under real-world constraints. Experienced in building and optimizing vision pipelines for performance-critical applications. Currently working in the robotics domain, focusing on 3D perception, sensor integration, and autonomous system intelligence, with growing expertise in mobile robotics, sensor fusion, and embedded systems.
 
             </motion.p>
 
